@@ -1,0 +1,33 @@
+{
+  "name": "react-immutable-hoc",
+  "version": "0.0.2",
+  "description": "Higher order component for turning props that are ImmutableJS objects into plain JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hally9k/react-immutable-hoc.git"
+  },
+  "keywords": [
+    "react",
+    "hoc",
+    "immutable",
+    "redux"
+  ],
+  "author": "hally9k",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hally9k/react-immutable-hoc/issues"
+  },
+  "homepage": "https://github.com/hally9k/react-immutable-hoc#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "immutable": ">=3.x.x",
+    "react": ">=15.x.x"
+  },
+  "devDependencies": {
+    "release": "^2.4.0"
+  }
+}
