@@ -1,6 +1,6 @@
 {
   "name": "react-immutable-hoc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description":
     "Higher order component for turning props that are ImmutableJS objects into plain JS.",
   "main": "dist/index.js",
