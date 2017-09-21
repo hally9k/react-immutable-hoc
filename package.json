@@ -14,6 +14,16 @@
   },
   "keywords": ["react", "hoc", "immutable", "redux"],
   "author": "hally9k",
+  "contributors": [
+    {
+      "name" : "David Seaman",
+      "url" : "https://github.com/ctrldavid"
+    },
+    {
+      "name" : "Jacob Foley",
+      "url" : "https://github.com/jacobjfoley"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hally9k/react-immutable-hoc/issues"
