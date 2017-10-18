@@ -15,53 +15,59 @@ const MyMapComponent = props => <p>{props.item.message}</p>
 const MyListComponent = props => props.items.map((item, i) => <p key={i}>{item.message}</p>)
 
 describe('ToJS HOC', () => {
+    it('Surfaces the appropriate display name for the wrapped component.', () => {
+      const WrappedComponent = toJS(MyMapComponent)
+      const component = mount(<WrappedComponent item={immutableMap} />)
+
+      expect(component.name()).toBe('ToJSWrapper(MyMapComponent)')
+    })
     describe('deserialises Immutable data structures.', () => {
         it('deserialises an Immutable Map to a plain JS Object when passed to props.', () => {
             const WrappedComponent = toJS(MyMapComponent)
             const component = mount(<WrappedComponent item={immutableMap} />)
-            const instance = component.instance()
+            const componentInstance = component.instance()
 
-            expect(instance.props.item.message).toBe('Hello word!')
+            expect(componentInstance.props.item.message).toBe('Hello word!')
         })
 
         it('deserialises an Immutable List to a plain JS Array when passed to props.', () => {
             const WrappedComponent = toJS(MyListComponent)
             const component = mount(<WrappedComponent items={immutableList} />)
-            const instance = component.instance()
+            const componentInstance = component.instance()
 
-            expect(instance.props.items[0].message).toBe('Hello word!')
+            expect(componentInstance.props.items[0].message).toBe('Hello word!')
         })
 
         it('deserialises an Immutable Set to a plain JS Array when passed to props.', () => {
             const WrappedComponent = toJS(MyListComponent)
             const component = mount(<WrappedComponent items={immutableSet} />)
-            const instance = component.instance()
+            const componentInstance = component.instance()
 
-            expect(instance.props.items[0].message).toBe('Hello word!')
+            expect(componentInstance.props.items[0].message).toBe('Hello word!')
         })
 
         it('deserialises a deep Immutable structure to a plain JS structure when passed to props.', () => {
             const WrappedComponent = toJS(MyListComponent)
             const component = mount(<WrappedComponent items={immutableDeep} />)
-            const instance = component.instance()
+            const componentInstance = component.instance()
 
-            expect(instance.props.items[0].nestedItems[0].message).toBe('Hello word!')
+            expect(componentInstance.props.items[0].nestedItems[0].message).toBe('Hello word!')
         })
     })
     describe('Passes through plain JS data structures.', () => {
       it('Passes through the string passed to props.', () => {
         const WrappedComponent = toJS(MyMapComponent)
         const component = mount(<WrappedComponent item={'A string.'} />)
-        const instance = component.instance()
+        const componentInstance = component.instance()
 
-        expect(instance.props.item).toBe('A string.')
+        expect(componentInstance.props.item).toBe('A string.')
       })
       it('Passes through the reference to the original plain JS object passed to props.', () => {
         const WrappedComponent = toJS(MyMapComponent)
         const component = mount(<WrappedComponent item={plainJSObject} />)
-        const instance = component.instance()
+        const componentInstance = component.instance()
 
-        expect(instance.props.item).toBe(plainJSObject)
+        expect(componentInstance.props.item).toBe(plainJSObject)
       })
     })
     describe('Caches previously serialised Immutable data structures.', () => {

@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist",
     "test": "jest --config=\"./jest.config.json\"",
     "test-debug": "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\"",
-    "lint": "eslint src/* test/*"
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
