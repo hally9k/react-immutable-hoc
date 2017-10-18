@@ -10,7 +10,8 @@ const immutableSet = Set([immutableMap])
 const immutableDeep = fromJS([{ nestedItems: [plainJSObject] }])
 
 const MyMapComponent = props => <p>{props.item.message}</p>
-const MyListComponent = props => props.items.map((item, i) => <p key={i}>{item.message}</p>)
+const MyListComponent = props =>
+    props.items.map((item, i) => <p key={i}>{item.message}</p>)
 
 describe('ToJS HOC', () => {
     it('Surfaces the appropriate display name for the wrapped component.', () => {
@@ -49,7 +50,9 @@ describe('ToJS HOC', () => {
             const component = mount(<WrappedComponent items={immutableDeep} />)
             const componentInstance = component.instance()
 
-            expect(componentInstance.props.items[0].nestedItems[0].message).toBe('Hello word!')
+            expect(
+                componentInstance.props.items[0].nestedItems[0].message
+            ).toBe('Hello word!')
         })
     })
     describe('Passes through plain JS data structures.', () => {
@@ -74,11 +77,14 @@ describe('ToJS HOC', () => {
             const component = mount(<WrappedComponent item={immutableMap} />)
             const componentInstance = component.instance()
 
-            const anotherComponent = mount(<WrappedComponent item={immutableMap} />)
+            const anotherComponent = mount(
+                <WrappedComponent item={immutableMap} />
+            )
             const anotherComponentInstance = anotherComponent.instance()
 
-
-            expect(componentInstance.props.item).toBe(anotherComponentInstance.props.item)
+            expect(componentInstance.props.item).toBe(
+                anotherComponentInstance.props.item
+            )
         })
     })
 })
