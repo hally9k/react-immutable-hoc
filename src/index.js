@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { isImmutable } from 'immutable'
+import { Iterable } from 'immutable'
 
 const convertedPropMap = new WeakMap()
 
@@ -19,12 +19,13 @@ const toJS = WrappedComponent =>
     }
 
     render() {
-      return <WrappedComponent {...this.state} />
+      this.props = this.state
+      return <WrappedComponent {...this.props} />
     }
   }
 
 const convertProp = prop => {
-  if (!isImmutable(prop)) return prop // not iterable can't convert
+  if (!Iterable.isIterable(prop)) return prop // not iterable can't convert
   if (convertedPropMap.has(prop)) return convertedPropMap.get(prop) // already been converted
   const converted = prop.toJS() // convert it
 
