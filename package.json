@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "jest --config=\"./jest.config.json\"",
-    "test-debug": "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\""
+    "test-debug": "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\"",
+    "lint": "eslint src/* test/*"
   },
   "repository": {
     "type": "git",
@@ -44,11 +45,21 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
+    "eslint": "^4.9.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-compat": "^2.0.1",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
     "fs": "0.0.1-security",
     "jest": "^21.2.1",
     "path": "^0.12.7",
