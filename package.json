@@ -7,7 +7,9 @@
     "build": "babel src --out-dir dist",
     "test": "jest --config=\"./jest.config.json\"",
     "test-debug": "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\"",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "precommit": "npm run lint",
+    "prepush": "npm t"
   },
   "repository": {
     "type": "git",
@@ -61,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "fs": "0.0.1-security",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
     "path": "^0.12.7",
     "react-dom": "^16.0.0",

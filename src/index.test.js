@@ -5,8 +5,6 @@ import { fromJS, List, Map, Set } from 'immutable'
 
 const plainJSObject = { message: 'Hello word!' }
 const immutableMap = Map(plainJSObject)
-const anotherImmutableMap = Map(plainJSObject)
-
 const immutableList = List([immutableMap])
 const immutableSet = Set([immutableMap])
 const immutableDeep = fromJS([{ nestedItems: [plainJSObject] }])
@@ -16,10 +14,10 @@ const MyListComponent = props => props.items.map((item, i) => <p key={i}>{item.m
 
 describe('ToJS HOC', () => {
     it('Surfaces the appropriate display name for the wrapped component.', () => {
-      const WrappedComponent = toJS(MyMapComponent)
-      const component = mount(<WrappedComponent item={immutableMap} />)
+        const WrappedComponent = toJS(MyMapComponent)
+        const component = mount(<WrappedComponent item={immutableMap} />)
 
-      expect(component.name()).toBe('ToJSWrapper(MyMapComponent)')
+        expect(component.name()).toBe('ToJSWrapper(MyMapComponent)')
     })
     describe('deserialises Immutable data structures.', () => {
         it('deserialises an Immutable Map to a plain JS Object when passed to props.', () => {
@@ -55,32 +53,32 @@ describe('ToJS HOC', () => {
         })
     })
     describe('Passes through plain JS data structures.', () => {
-      it('Passes through the string passed to props.', () => {
-        const WrappedComponent = toJS(MyMapComponent)
-        const component = mount(<WrappedComponent item={'A string.'} />)
-        const componentInstance = component.instance()
+        it('Passes through the string passed to props.', () => {
+            const WrappedComponent = toJS(MyMapComponent)
+            const component = mount(<WrappedComponent item={'A string.'} />)
+            const componentInstance = component.instance()
 
-        expect(componentInstance.props.item).toBe('A string.')
-      })
-      it('Passes through the reference to the original plain JS object passed to props.', () => {
-        const WrappedComponent = toJS(MyMapComponent)
-        const component = mount(<WrappedComponent item={plainJSObject} />)
-        const componentInstance = component.instance()
+            expect(componentInstance.props.item).toBe('A string.')
+        })
+        it('Passes through the reference to the original plain JS object passed to props.', () => {
+            const WrappedComponent = toJS(MyMapComponent)
+            const component = mount(<WrappedComponent item={plainJSObject} />)
+            const componentInstance = component.instance()
 
-        expect(componentInstance.props.item).toBe(plainJSObject)
-      })
+            expect(componentInstance.props.item).toBe(plainJSObject)
+        })
     })
     describe('Caches previously serialised Immutable data structures.', () => {
-      it('Returns the same plain JS object instance for the same given Immutable Map.', () => {
-        const WrappedComponent = toJS(MyMapComponent)
-        const component = mount(<WrappedComponent item={immutableMap} />)
-        const componentInstance = component.instance()
+        it('Returns the same plain JS object instance for the same given Immutable Map.', () => {
+            const WrappedComponent = toJS(MyMapComponent)
+            const component = mount(<WrappedComponent item={immutableMap} />)
+            const componentInstance = component.instance()
 
-        const anotherComponent = mount(<WrappedComponent item={immutableMap} />)
-        const anotherComponentInstance = anotherComponent.instance()
+            const anotherComponent = mount(<WrappedComponent item={immutableMap} />)
+            const anotherComponentInstance = anotherComponent.instance()
 
 
-        expect(componentInstance.props.item).toBe(anotherComponentInstance.props.item)
-      })
+            expect(componentInstance.props.item).toBe(anotherComponentInstance.props.item)
+        })
     })
 })
