@@ -14,7 +14,7 @@ class MyOtherComponent extends Component {
 }
 
 describe('ToJS HOC', () => {
-  it('confirms that true is true.', () => {
+  it('deserialises an Immutable Map to a plain JS object when passed to props.', () => {
     const WrappedComponent = toJS(MyOtherComponent)
     const component = mount(<WrappedComponent item={Map({ message: 'Hello word!' })} />)
     const instance = component.instance()
