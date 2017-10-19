@@ -1,6 +1,6 @@
 {
     "name": "react-immutable-hoc",
-    "version": "0.0.10",
+    "version": "1.0.0",
     "description":
         "Higher order component for turning props that are ImmutableJS objects into plain JS.",
     "main": "dist/index.js",
@@ -41,8 +41,8 @@
         "react": "^16.0.0"
     },
     "peerDependencies": {
-        "immutable": ">=3.x.x",
-        "react": ">=15.x.x"
+        "immutable": ">=4.x.x",
+        "react": ">=16.x.x"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
