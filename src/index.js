@@ -4,44 +4,45 @@ import { Iterable } from 'immutable'
 const convertedPropMap = new WeakMap()
 
 const toJS = WrappedComponent =>
-  class ToJSWrapper extends Component {
-    constructor(props) {
-      super(props)
-      this.state = convertProps(props)
-    }
+    class ToJSWrapper extends Component {
+        static get displayName() {
+            return `ToJSWrapper(${getDisplayName(WrappedComponent)})`
+        }
 
-    static get displayName() {
-      return `ToJSWrapper(${getDisplayName(WrappedComponent)})`
-    }
+        constructor(props) {
+            super(props)
+            this.state = convertProps(props)
+        }
 
-    componentWillReceiveProps(nextProps) {
-      this.setState(convertProps(nextProps))
-    }
+        componentWillReceiveProps(nextProps) {
+            this.setState(convertProps(nextProps))
+        }
 
-    render() {
-      this.props = this.state
-      return <WrappedComponent {...this.props} />
+        render() {
+            this.props = this.state
+
+            return <WrappedComponent {...this.props} />
+        }
     }
-  }
 
 const convertProp = prop => {
-  if (!Iterable.isIterable(prop)) return prop // not iterable can't convert
-  if (convertedPropMap.has(prop)) return convertedPropMap.get(prop) // already been converted
-  const converted = prop.toJS() // convert it
+    if (!Iterable.isIterable(prop)) return prop // not iterable can't convert
+    if (convertedPropMap.has(prop)) return convertedPropMap.get(prop) // already been converted
+    const converted = prop.toJS() // convert it
 
-  convertedPropMap.set(prop, converted) // cache it
+    convertedPropMap.set(prop, converted) // cache it
 
-  return converted // return it.
+    return converted // return it.
 }
 
 const convertProps = props =>
-  Object.keys(props).reduce((convertedProps, key) => {
-    convertedProps[key] = convertProp(props[key])
+    Object.keys(props).reduce((convertedProps, key) => {
+        convertedProps[key] = convertProp(props[key])
 
-    return convertedProps
-  }, {})
+        return convertedProps
+    }, {})
 
 const getDisplayName = Component =>
-  Component.displayName || Component.name || 'Component'
+    Component.displayName || Component.name || 'Component'
 
 export default toJS
