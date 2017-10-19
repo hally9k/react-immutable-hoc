@@ -1,5 +1,4 @@
 {
     "presets": ["flow", "react", "es2015"],
-    "sourceMaps": true,
-    "ignore": ["**/*.test.js"]
+    "sourceMaps": true
 }
