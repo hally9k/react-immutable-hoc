@@ -1,20 +1,27 @@
+// @flow
+type Props = *
+
 import React, { Component } from 'react'
+// $FlowFixMe
 import { Iterable } from 'immutable'
 
-const convertedPropMap = new WeakMap()
+const convertedPropMap: WeakMap<*, *> = new WeakMap()
 
-const toJS = WrappedComponent =>
-    class ToJSWrapper extends Component {
-        static get displayName() {
+const toJS: Function = (
+    WrappedComponent: Class<React.Component<*, *>>
+): Class<Component<*, *>> =>
+    // $FlowFixMe
+    class ToJSWrapper extends Component<*, *> {
+        static get displayName(): string {
             return `ToJSWrapper(${getDisplayName(WrappedComponent)})`
         }
 
-        constructor(props) {
+        constructor(props: Props) {
             super(props)
             this.state = convertProps(props)
         }
 
-        componentWillReceiveProps(nextProps) {
+        componentWillReceiveProps(nextProps: Props) {
             this.setState(convertProps(nextProps))
         }
 
@@ -25,24 +32,24 @@ const toJS = WrappedComponent =>
         }
     }
 
-const convertProp = prop => {
+const convertProp = (prop: Props): Props => {
     if (!Iterable.isIterable(prop)) return prop // not iterable can't convert
     if (convertedPropMap.has(prop)) return convertedPropMap.get(prop) // already been converted
-    const converted = prop.toJS() // convert it
+    const converted: Props = prop.toJS() // convert it
 
     convertedPropMap.set(prop, converted) // cache it
 
     return converted // return it.
 }
 
-const convertProps = props =>
+const convertProps = (props: Props): Props =>
     Object.keys(props).reduce((convertedProps, key) => {
         convertedProps[key] = convertProp(props[key])
 
         return convertedProps
     }, {})
 
-const getDisplayName = Component =>
+const getDisplayName = (Component: Class<React.Component<*, *>>): string =>
     Component.displayName || Component.name || 'Component'
 
 export default toJS

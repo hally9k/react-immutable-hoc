@@ -1,6 +1,9 @@
+// @flow
+
 import React from 'react'
 import { mount } from 'enzyme'
 import toJS from './index'
+// $FlowFixMe
 import { fromJS, List, Map, Set } from 'immutable'
 
 const plainJSObject = { message: 'Hello word!' }
