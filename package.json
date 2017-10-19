@@ -1,13 +1,16 @@
 {
     "name": "react-immutable-hoc",
     "version": "0.0.10",
-    "description": "Higher order component for turning props that are ImmutableJS objects into plain JS.",
+    "description":
+        "Higher order component for turning props that are ImmutableJS objects into plain JS.",
     "main": "dist/index.js",
     "scripts": {
         "build": "babel src --out-dir dist",
         "test": "jest --config=\"./jest.config.json\"",
-        "test-debug": "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\"",
+        "test-debug":
+            "node --inspect ./node_modules/.bin/jest --watch --runInBand --config=\"./jest.config.json\"",
         "lint": "eslint src",
+        "type-check": "flow",
         "format": "prettier-eslint \"src/**/*.{js,jsx}\" --write",
         "precommit": "npm run lint",
         "prepush": "npm t"
@@ -16,12 +19,7 @@
         "type": "git",
         "url": "git+https://github.com/hally9k/react-immutable-hoc.git"
     },
-    "keywords": [
-        "react",
-        "hoc",
-        "immutable",
-        "redux"
-    ],
+    "keywords": ["react", "hoc", "immutable", "redux"],
     "author": "hally9k",
     "contributors": [
         {
@@ -41,6 +39,10 @@
     "dependencies": {
         "immutable": "^4.0.0-rc.9",
         "react": "^16.0.0"
+    },
+    "peerDependencies": {
+        "immutable": ">=3.x.x",
+        "react": ">=15.x.x"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
@@ -62,7 +64,7 @@
         "eslint-plugin-react": "^7.1.0",
         "flow-bin": "^0.57.3",
         "flow-typed": "^2.2.0",
-        "fs": "0.0.1-security",
+        "fs": "0.0.2",
         "husky": "^0.14.3",
         "jest": "^21.2.1",
         "path": "^0.12.7",
