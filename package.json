@@ -71,6 +71,6 @@
         "prettier-eslint-cli": "^4.4.0",
         "react-dom": "^16.0.0",
         "release": "^2.4.0",
-        "webpack": "^3.6.0"
+        "webpack": "^4.12.2"
     }
 }
