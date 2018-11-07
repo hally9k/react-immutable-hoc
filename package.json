@@ -69,7 +69,7 @@
         "jest": "^21.2.1",
         "path": "^0.12.7",
         "prettier-eslint-cli": "^4.4.0",
-        "react-dom": "^16.0.0",
+        "react-dom": "^16.6.1",
         "release": "^2.4.0",
         "webpack": "^3.6.0"
     }
