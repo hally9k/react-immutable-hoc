@@ -65,7 +65,7 @@
         "flow-bin": "^0.57.3",
         "flow-typed": "^2.2.0",
         "fs": "0.0.2",
-        "husky": "^0.14.3",
+        "husky": "^3.0.0",
         "jest": "^21.2.1",
         "path": "^0.12.7",
         "prettier-eslint-cli": "^4.4.0",
