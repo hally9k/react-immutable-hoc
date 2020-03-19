@@ -38,7 +38,7 @@
     "homepage": "https://github.com/hally9k/react-immutable-hoc#readme",
     "dependencies": {
         "immutable": "^4.0.0-rc.9",
-        "react": "^16.0.0"
+        "react": "^16.13.1"
     },
     "peerDependencies": {
         "immutable": ">=4.x.x",
